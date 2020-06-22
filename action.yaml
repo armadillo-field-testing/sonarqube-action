@@ -3,7 +3,7 @@ description: 'Scan your code with SonarQube Scanner to detect bugs, vulnerabilit
 author: 'Dwi Siswanto'
 branding:
   icon: 'check'
-  color: 'green'
+  color: 'purple'
 runs:
   using: 'docker'
   image: 'Dockerfile'
