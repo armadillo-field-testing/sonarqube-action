@@ -3,7 +3,7 @@ FROM debian:stretch-slim
 LABEL "com.github.actions.name"="SonarQube Scan"
 LABEL "com.github.actions.description"="Scan your code with SonarQube Scanner to detect bugs, vulnerabilities and code smells in more than 25 programming languages."
 LABEL "com.github.actions.icon"="check"
-LABEL "com.github.actions.color"="green"
+LABEL "com.github.actions.color"="purple"
 
 LABEL version="0.0.1"
 LABEL repository="https://github.com/armadillo-field-testing/sonarqube-action"
