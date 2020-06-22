@@ -43,7 +43,7 @@ RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonar
 
 USER scanner-cli
 COPY entrypoint.sh /entrypoint.sh
-chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 
 ENTRYPOINT ["entrypoint.sh"]
