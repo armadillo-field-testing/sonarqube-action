@@ -39,10 +39,10 @@ RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonar
     && npm install -g typescript@3.6.3
 
 
-COPY --chown=scanner-cli:scanner-cli entrypoint.sh /usr/src/
+COPY --chown=scanner-cli:scanner-cli entrypoint.sh /usr/bin/docker/
 
-WORKDIR /usr/src
+# WORKDIR /usr/src
 
 USER scanner-cli
 
-ENTRYPOINT ["/usr/src/entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/docker/entrypoint.sh"]
