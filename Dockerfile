@@ -27,7 +27,7 @@ RUN apt-get update \
 RUN groupadd --gid ${GID} scanner-cli \
     && useradd --uid ${UID} --gid scanner-cli --shell /bin/bash --create-home scanner-cli
 
-
+WORKDIR /opt
 RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
     && unzip sonar-scanner-cli.zip \
     && rm sonar-scanner-cli.zip \
@@ -39,11 +39,10 @@ RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonar
     && npm install -g typescript@3.6.3
 
 
+COPY --chown=scanner-cli:scanner-cli bin /usr/bin/
 
+WORKDIR /usr/src
 
 USER scanner-cli
-COPY --chown=scanner-cli:scanner-cli entrypoint.sh entrypoint.sh
-RUN chmod +x entrypoint.sh
 
-
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
