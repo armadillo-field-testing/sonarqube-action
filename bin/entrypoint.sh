@@ -21,4 +21,4 @@ if [ "${SONAR_PROJECT_BASE_DIR:-}" ]; then
 fi
 
 export SONAR_USER_HOME="$PROJECT_BASE_DIR/.sonar"
-sonar-scanner "${args[@]}" 
+sonar-scanner "${args[@]}"  -X
