@@ -13,7 +13,7 @@ inputs:
   projectKey:
     description: "The project's unique key. Allowed characters are: letters, numbers, -, _, . and :, with at least one non-digit."
     required: false
-    default: "github-action-pr"
+    default: "github-action-pr-1"
   projectBaseDir:
     description: "Set the sonar.projectBaseDir analysis property"
     required: false
