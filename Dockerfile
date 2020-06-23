@@ -41,7 +41,7 @@ RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonar
 
 COPY --chown=scanner-cli:scanner-cli bin /usr/bin/
 
-WORKDIR /usr/src
+# WORKDIR /usr/src
 
 USER scanner-cli
 
