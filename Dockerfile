@@ -28,7 +28,7 @@ ENV SONAR_SCANNER_HOME=${SONAR_SCANNER_HOME} \
 #    && useradd --uid ${UID} --gid scanner-cli --shell /bin/bash --create-home scanner-cli
 
 WORKDIR /opt
-RUN wget -q -O /opt/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
+RUN wget -U "root" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
     && unzip sonar-scanner-cli.zip \
     && rm sonar-scanner-cli.zip \
     && mv sonar-scanner-${SONAR_SCANNER_VERSION}-linux ${SONAR_SCANNER_HOME} \
