@@ -20,15 +20,15 @@ ENV SONAR_SCANNER_HOME=${SONAR_SCANNER_HOME} \
     PATH=${SONAR_SCANNER_HOME}/bin:${NODEJS_HOME}/bin:${PATH} \
     NODE_PATH=${NODEJS_HOME}/lib/node_modules
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates git wget unzip xz-utils pylint \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update \
+#    && apt-get install -y --no-install-recommends ca-certificates git wget unzip xz-utils pylint \
+#    && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd --gid ${GID} scanner-cli \
-    && useradd --uid ${UID} --gid scanner-cli --shell /bin/bash --create-home scanner-cli
+# RUN groupadd --gid ${GID} scanner-cli \
+#    && useradd --uid ${UID} --gid scanner-cli --shell /bin/bash --create-home scanner-cli
 
 WORKDIR /opt
-RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
+RUN wget -q -O /opt/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
     && unzip sonar-scanner-cli.zip \
     && rm sonar-scanner-cli.zip \
     && mv sonar-scanner-${SONAR_SCANNER_VERSION}-linux ${SONAR_SCANNER_HOME} \
@@ -39,7 +39,7 @@ RUN wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonar
     && npm install -g typescript@3.6.3
 
 
-COPY --chown=scanner-cli:scanner-cli bin /usr/bin/
+COPY bin /usr/bin/
 
 WORKDIR /usr/src
 
